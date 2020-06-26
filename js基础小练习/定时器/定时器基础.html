@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // setInterval(函数, 毫秒) ;    重复执行（发动机）
+        // clearInterval(setInterval(函数, 毫秒)) 清除定时器
+        // 正常写法
+        // var timer = setInterval(函数，毫秒);
+        // clearInterval（timer）;
+
+        // 函数调用方式
+        /*
+         1.fn1(); 直接调用
+         2.document.onclick    事件调用
+         3.定时器
+         */
+
+
+        // var timer=setTimeout(函数，毫秒);  执行一次(炸弹)
+        // clearTimeout(timer);
+        var i = 0;
+        function fn1() {
+            i++;
+            document.title = i;
+            if (i === 5) {
+                clearInterval(timer);
+            }
+        }
+        var timer = setInterval(fn1, 200)
+
+    </script>
+</body>
+
+</html>
