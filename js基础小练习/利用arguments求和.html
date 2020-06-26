@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //当函数的参数个数无法确定的时候：用arguments
+        console.log(sum(2, 1, 1, '/'))
+        function sum() {
+            var n = 0;
+            Array.from(arguments).forEach((item, index, arr) => {
+                var val = arr[arr.length - 1];
+                if (index !== arr.length - 1) {
+                    if (index === 0) {
+                        n = item;
+                    } else {
+                        switch (val) {
+                            case '+':
+                                n += item;
+                                break;
+                            case '-':
+                                n -= item;
+                                break;
+                            case '*':
+                                n *= item;
+                                break;
+                            case '/':
+                                if (item === 0) {
+                                    n = '错误';
+                                    return;
+                                } else {
+                                    n /= item;
+                                }
+                                break;
+                        }
+                    }
+                }
+            })
+            return n;
+        }
+
+    </script>
+</body>
+
+</html>
