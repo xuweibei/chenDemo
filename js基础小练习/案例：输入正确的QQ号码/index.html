@@ -1,0 +1,53 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="box">
+      <input id="search" type="text" />
+      <input id="btn" type="button" value="验证" />
+      <div class="validate">
+        <div class="arrow"><em></em><span></span></div>
+        <div class="text">请输入5-10位数字</div>
+      </div>
+    </div>
+
+    <script>
+      var search=document.getElementById('search');
+      var txt=document.querySelector('.text');
+      var btn=document.getElementById('btn');
+      var validate=document.querySelector('.validate');
+      // 内容是否为空
+      // 输入是否为数字
+      // 请输入5-10个数字
+      //首字母不能为0
+      //请不要输入小数
+      //验证通过
+     
+      
+      btn.onclick=function(){
+        validate.style.display="block";
+        var val=search.value;
+        if(val==''){
+          txt.innerHTML='内容不能为空';
+        }else if(isNaN(val) ){
+          txt.innerHTML='请输入数字';
+        }else if(val.length<5 || val.length>10){
+          txt.innerHTML='请输入5-10个数字';
+        }else if(val[0]==0){
+          txt.innerHTML='首字母不能为0';
+        }else if(parseInt(val)!=parseFloat(val) || val[val.length-1]=='.'){
+          txt.innerHTML='请不要输入小数';
+        }else{
+          txt.innerHTML='验证通过';
+        }
+      }
+      
+    </script>
+  </body>
+</html>

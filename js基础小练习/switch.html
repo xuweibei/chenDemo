@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button>提交</button>
+    <script>
+        var txt=document.querySelector('input');
+        var btn=document.querySelector('button');
+        btn.onclick=function(){
+            var val=txt.value;
+            switch (val){
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                console.log('今天是工作日');
+                break;
+                case '6':
+                case '7':
+                console.log('今天是休息日');
+            }
+        }
+    </script>
+</body>
+</html>
