@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: url('images/sina.jpg') no-repeat center 0;
+        text-align: center;
+    }
+
+    #ad {
+        display: none;
+    }
+</style>
+
+<body>
+    <img id="ad" src="images/miaov.jpg" alt="">
+</body>
+<script>
+    var ad = document.querySelector('#ad');
+    setTimeout(function () {
+        ad.style.display = 'inline-block';
+        setTimeout(function () {
+            ad.style.display = 'none';
+        }, 2000)
+    }, 1000)
+
+</script>
+
+</html>

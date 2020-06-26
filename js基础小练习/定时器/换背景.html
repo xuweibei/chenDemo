@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>换背景</button>
+    <button>停止</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        var urls = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg', 'images/4.jpg'];
+        var num = 1;
+        var timer = null;
+        var body = document.body;
+        btns[0].onclick = function () {
+            clearInterval(timer);//防止重复点击
+            timer = setInterval(function () {
+                body.style.background = 'url(' + urls[num] + ')';
+                num++;
+                num %= urls.length;
+            }, 1000)
+        }
+        btns[1].onclick = function () {
+            clearInterval(timer);
+        }
+
+    </script>
+
+</html>
