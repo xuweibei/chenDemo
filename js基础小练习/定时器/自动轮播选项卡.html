@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrap {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            padding: 10px;
+        }
+
+        .navcon {
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .navcon li {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: pink;
+            float: left;
+        }
+
+        .navcon li.active {
+            background: red;
+        }
+
+        .imgcon img {
+            width: 200px;
+            height: 150px;
+        }
+
+        .textcon,
+        .imgcon {
+            float: left;
+        }
+
+        .textcon li {
+            width: 90px;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 10px;
+
+        }
+
+        .textcon li.active {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="navcon">
+            <!-- <li class="active">菜单一</li> -->
+            <li>菜单一</li>
+            <li class="active">菜单二</li>
+        </ul>
+        <div class="con">
+            <div class="imgcon">
+                <img id="img" src="images/1.jpg" alt="">
+            </div>
+            <ul class="textcon" id="textcon">
+            </ul>
+        </div>
+    </div>
+    <script>
+        var num = 0;
+        var img = document.querySelector('#img');
+        var arrUrl = ['images/1.jpg', 'images/2.jpg', 'images/3.jpg', 'images/1.png', 'images/2.png', 'images/3.png'];
+        var arrText = ['图片一', '图片二', '图片三', '图片四', '图片五', '图片六'];
+        var textcon = document.getElementById('textcon');
+        var timer = null;
+        var lis = textcon.getElementsByTagName('li');
+        const navcon = document.getElementsByClassName('navcon')[0];
+        const liNavcon = navcon.getElementsByTagName('li')
+        let activeNum = 0;
+        timer = setInterval(function () {
+            num++;
+            activeNum++;
+            num %= arrUrl.length;
+            fnTab();
+        }, 2000)
+
+        // for (var i = 0; i < arrUrl.length; i++) {
+        //     textcon.innerHTML += '<li>' + arrText[i] + '</li>'
+
+        // }
+        let onOff = true;
+        fnTab();
+        // 初始化
+        function fnTab() {
+            textcon.innerHTML = '';
+            if (activeNum === 0 || activeNum === arrUrl.length / 2) {
+                onOff = !onOff;
+                showLi();
+            }
+            if (activeNum >= arrUrl.length / 2) {
+                activeNum = 0;
+            }
+            const value = (num < arrUrl.length / 2) ? 0 : arrUrl.length / 2;
+            const len = (num < arrUrl.length / 2) ? arrUrl.length / 2 : arrUrl.length;
+
+            for (let i = value; i < len; i++) {
+                textcon.innerHTML += '<li>' + arrText[i] + '</li>';
+                lis[i] && (lis[i].className = '');
+            }
+            img.src = arrUrl[num];
+            lis[activeNum].className = 'active';
+            // if (num < arrUrl.length / 2) {
+            //     for (let i = 0; i < arrUrl.length / 2; i++) {
+            //         textcon.innerHTML += '<li>' + arrText[i] + '</li>';
+            //     }
+            // } else {
+            //     for (let i = arrUrl.length / 2; i < arrUrl.length; i++) {
+            //         textcon.innerHTML += '<li>' + arrText[i] + '</li>';
+            //     }
+            // }
+
+            // console.log(lis)
+            // for (var i = 0; i < arrUrl.length; i++) {
+            //     lis[i] && (lis[i].className = '');
+            // }
+
+        }
+
+        function showLi() {
+            liNavcon[onOff ? 1 : 0].classList.toggle('active')
+            liNavcon[onOff ? 0 : 1].classList.toggle('active')
+        }
+
+
+    </script>
+</body>
+
+</html>
