@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="miaov.js"></script>
+    <script>
+        var str = '';
+        var len = 6;
+        var num = 0;
+        var timer = null;
+        var onOff = true;
+        var divs = document.getElementsByTagName('div');
+        var target = 200;
+        for (var i = 0; i < len; i++) {
+            str += '<div style="width:50px;height:50px;background:red; position:absolute; left:' + i * 60 + 'px;top:0px"></div>'
+        }
+        document.body.innerHTML = str;
+        document.onclick = function () {
+            if (onOff) {
+                onOff = false;
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    if (parseInt(getStyle(divs[divs.length - 1], 'top')) === target) {
+                        doMove(divs[num], 'top', 10, 0);
+                        num++;
+                    } else if (parseInt(getStyle(divs[divs.length - 1], 'top')) === 0) {
+                        doMove(divs[num], 'top', 10, target);
+                        num++;
+                    }
+                    // doMove(divs[num], 'top', 10, 200);
+                    if (num == len) {
+                        num = 0;
+                        onOff = true
+                        clearInterval(timer);
+                    }
+                }, 100)
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
