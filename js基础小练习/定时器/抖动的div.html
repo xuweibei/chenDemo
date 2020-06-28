@@ -23,25 +23,21 @@
         }
         document.body.innerHTML = str;
         document.onclick = function () {
-            if (onOff) {
-                onOff = false;
-                clearInterval(timer);
-                timer = setInterval(function () {
-                    if (parseInt(getStyle(divs[divs.length - 1], 'top')) === target) {
-                        doMove(divs[num], 'top', 10, 0);
-                        num++;
-                    } else if (parseInt(getStyle(divs[divs.length - 1], 'top')) === 0) {
-                        doMove(divs[num], 'top', 10, target);
-                        num++;
-                    }
-                    // doMove(divs[num], 'top', 10, 200);
-                    if (num == len) {
-                        num = 0;
-                        onOff = true
-                        clearInterval(timer);
-                    }
-                }, 100)
-            }
+            clearInterval(timer);
+            timer = setInterval(function () {
+                if (parseInt(getStyle(divs[divs.length - 1], 'top')) === target) {
+                    doMove(divs[num], 'top', 10, 0);
+                    num++;
+                } else if (parseInt(getStyle(divs[divs.length - 1], 'top')) === 0) {
+                    doMove(divs[num], 'top', 10, target);
+                    num++;
+                }
+                // doMove(divs[num], 'top', 10, 200);
+                if (num == len) {
+                    num = 0;
+                    clearInterval(timer);
+                }
+            }, 100)
 
         }
 
