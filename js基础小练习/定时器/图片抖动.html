@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            width: 180px;
+        }
+
+        #img1 {
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="img1" src="images/4.jpg" />
+    <img id="img2" src="images/2.jpg" />
+    <script src="miaov.js"></script>
+    <script>
+        var img1 = document.getElementById('img1');
+        var img2 = document.getElementById('img2');
+
+        img1.onclick = fnShake;
+        img2.onclick = fnShake;
+        function fnShake(obj) {
+            var _this = this;
+            shake(_this, 'left', function () {
+                shake(_this, 'top');
+            })
+
+        }
+        function shake(obj, attr, endFn) {
+            var arr = [];
+            var num = 0;
+            var timer = null;
+            var pos = parseInt(getStyle(obj, attr));
+            for (var i = 20; i > 0; i -= 2) {
+                arr.push(i, -i);
+
+            }
+            arr.push(0);
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                obj.style[attr] = pos + arr[num] + 'px';
+                num++;
+                if (num == arr.length) {
+                    clearInterval(obj.timer);
+                    endFn && endFn();
+                }
+            }, 50)
+        }
+    </script>
+</body>
+
+</html>
