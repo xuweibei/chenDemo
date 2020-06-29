@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1.charAt
+            格式：
+                string.charAt(index)
+            返回值类型：
+                string
+            作用：
+			 	返回指定位置(指定索引处)的字符
+            参数：
+                index:位置，从0开始(默认为0)
+            注意：
+                当index越界，小于0或者大于length,返回空字符串
+
+        2.charCodeAt
+        格式：
+            string.charCodeAt(index)
+        返回值类型：
+            number 
+        作用：
+            返回指定位置的字符的 Unicode 编码。
+        参数：
+            index:位置，从0开始(默认为0)
+        注意：
+            当index越界，小于0或者大于length,返回NaN;
+        3.fromCharCode
+        格式：
+            String.fromCharCode(n,n1,n2...);  //大写的String
+        返回值类型：
+            string 
+        作用：
+            根据unicode返回指定字符
+        参数：
+            n:unicode
+
+
+            常用的unicode
+			 		0-9:
+			 			48-57
+			 * 		a-z:
+			 * 			97-122
+			 * 		A-Z：
+			 * 			65-90
+			 * 
+         */
+        var str = 'abcdefg'
+        console.log(str.charAt(-1)); //空
+        console.log(str.charAt(0)); //'a'
+        console.log(str.charCodeAt(-1)) //NaN
+        console.log(str.charCodeAt(0)) //97
+        console.log(String.fromCharCode(48, 49))//01
+        console.log(String.fromCharCode(72, 69, 76, 76, 79)) //HELLO
+        72, 69, 76, 76, 79
+    </script>
+</body>
+
+</html>
