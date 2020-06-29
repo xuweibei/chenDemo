@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<p id="time" style="font-size: 30px;"></p>
+<img src="img/1.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/colon.JPG" alt="">
+<img src="img/2.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/colon.JPG" alt="">
+<img src="img/0.JPG" alt="">
+<img src="img/9.JPG" alt="">
+<script>
+
+    var time = document.getElementById('time');
+    var imgs = document.getElementsByTagName('img');
+    setInterval(fnTime, 1000);
+    fnTime();
+    function fnTime() {
+        var myTime = new Date();
+        var hours = myTime.getHours();//时
+        var minutes = myTime.getMinutes();//分
+        var seconds = myTime.getSeconds();//秒
+        var str = toTwo(hours) + ':' + toTwo(minutes) + ':' + toTwo(seconds);
+        time.innerHTML = str;
+        // imgs[7].src = 'img/' + str.charAt(7) + '.jpg';
+        for (var i = 0; i < imgs.length; i++) {
+            if (i == 2 || i == 5) {
+                imgs[i].src = 'img/colon.jpg';
+            } else {
+                imgs[i].src = 'img/' + str.charAt(i) + '.jpg';
+            }
+        }
+    }
+    function toTwo(n) {
+        return n < 10 ? '0' + n : '' + n;
+    } 
+</script>
+
+<body>
+
+</body>
+
+</html>

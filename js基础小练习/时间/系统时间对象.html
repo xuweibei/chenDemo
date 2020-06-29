@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body style="font-size:60px;">
+    <script>
+        var str = '';
+        setInterval(fnTime, 1000);
+        fnTime();
+        function fnTime() {
+            // new Date() 当前系统的时间对象
+            var myTime = new Date();
+            //number
+            var year = myTime.getFullYear(); //年
+            var month = myTime.getMonth() + 1; //月
+            var date = myTime.getDate();//日
+            var week = myTime.getDay();//星期
+            var hours = myTime.getHours();//时
+            var minutes = myTime.getMinutes();//分
+            var seconds = myTime.getSeconds();//秒
+            //大写
+            switch (week) {
+                case 0:
+                    week = '星期日';
+                    break;
+                case 1:
+                    week = '星期一';
+                    break;
+                case 2:
+                    week = '星期二';
+                    break;
+                case 3:
+                    week = '星期三';
+                    break;
+                case 4:
+                    week = '星期四';
+                    break;
+                case 5:
+                    week = '星期五';
+                    break;
+                case 6:
+                    week = '星期六';
+                    break;
+
+            }
+            str = '今天是' + year + '年' + month + '月' + date + '日' + week + toTwo(hours) + ':' + toTwo(minutes) + ':' + toTwo(seconds);
+            document.body.innerHTML = str;
+
+        }
+
+
+
+        function toTwo(n) {
+            // if (n < 10) {
+            //     return '0' + n;
+            // } else {
+            //     return '' + n;
+            // }
+            return n < 10 ? '0' + n : '' + n;
+
+        }
+    </script>
+
+
+    </bodystyle="font-size:60px;">
+
+</html>

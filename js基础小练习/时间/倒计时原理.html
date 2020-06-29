@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时原理</title>
+</head>
+
+<body>
+    <script>
+        var nowTime = new Date();
+        //月份需要减一
+        // var newTime = new Date(2020, 5, 29, 11, 40, 0);
+        var newTime = new Date('June 10,2020 12:12:12');
+        // new Date( 2013, 10, 27,  21,56,0  );
+        var t = Math.floor((newTime - nowTime) / 1000);//向下取整
+        var str = Math.floor(t / 86400) + '天' + Math.floor(t % 86400 / 3600) + '时' + Math.floor(t % 86400 % 3600 / 60) + '分' + t % 60 + '秒';
+        console.log(str);
+
+
+
+// 天：Math.floor(t/86400)
+// 时：Math.floor(t%86400/3600)
+// 分：Math.floor(t%86400%3600/60)
+// 秒：t%60
+
+// 数字形式：new Date( 2013,4,1,9,48,12 );
+// 字符串形式：new Date('June 10,2013 12:12:12');
+
+// January、February、March、April、May、June、
+// July、August、September、October、November、December
+    </script>
+
+</body>
+
+</html>

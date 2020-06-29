@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .t1 {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    距离：<input class="t1" type="text" value="June 29,2020 15:30:00" /><br />
+    还剩：<input class="t1" type="text" />
+    <input type="button" value="开始倒计时吧" />
+    <script>
+        /* 时间戳
+       var t =  Math.floor( new Date().getTime()/1000 );
+       alert( Math.floor(t/86400)+'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+t%60+'秒' );
+       */
+        var aInp = document.getElementsByTagName('input');
+        var nowTime = null;
+        var newTime = null;
+        var str = '';
+        var t = 0;
+        var timer = null;
+        aInp[2].onclick = function () {
+            newTime = new Date(aInp[0].value);
+            clearInterval(timer);
+            timer = setInterval(function () {
+                nowTime = new Date();
+                t = Math.floor((newTime - nowTime) / 1000);
+                if (t >= 0) {
+
+
+                    str = Math.floor(t / 86400) + '天' + Math.floor(t % 86400 / 3600) + '时' + Math.floor(t % 86400 % 3600 / 60) + '分' + t % 60 + '秒';
+                    aInp[1].value = str;
+                } else {
+                    clearInterval(timer);
+                }
+            }, 1000)
+        }
+    </script>
+</body>
+
+</html>
