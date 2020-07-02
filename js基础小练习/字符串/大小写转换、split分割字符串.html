@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // string.toLocaleLowerCase();//转换成小写
+        // string.toLocaleUpperCase();//转换成大写
+        /*
+        1.split
+            格式：
+                string.split(separator,limit);
+
+            返回值类型：
+                object (返回一个数组)
+            作用：
+                把一个字符串分割成字符串数组。
+            参数：
+                separator: 可选。字符串或正则表达式，从该参数指定的地方分割 string Object。
+                limit: 可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。
+                    -如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。
+            注意：
+                1.split() 方法不改变原始字符串。
+
+            */
+        var str = 'w ww.baidu.com'
+        console.log(str.split());//w ww.baidu.com
+        console.log(str.split(''));//["w", " ", "w", "w", ".", "b", "a", "i", "d", "u", ".", "c", "o", "m"]
+        console.log(str.split(' '));//["w", "ww.baidu.com"]
+        console.log(str.split(' ', 1));//["w"]   输出一个数组的值
+        console.log(str.split('d'));//["w ww.bai", "u.com"]
+    </script>
+</body>
+
+</html>
