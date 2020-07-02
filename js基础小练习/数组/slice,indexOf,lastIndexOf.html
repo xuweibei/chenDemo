@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 1.slice
+			 	array.slice(起始位置，[结束位置])
+                    从已有的数组中返回选定的元素。
+			 * 		截取数组中一段数据，放新数组里返回
+			 * 	参数：
+			 * 		[结束位置]:默认到最后一位
+			 *  返回值：
+			 * 		数组，截取到的数据放数组里返回，没截取到返回空数组
+			 * 	注意：
+			 * 		1.不传参，数组里每个值放新数组里返回
+			 * 	    2.-1是最后一位
+			 * 		3.从开始位置截取到结束位置，不包含结束位置
+			 *      4.结束位置-开始位置=截取个数
+             2.indexOf
+                array.indexOf(目标值,[起始位置])
+			 		返回数组中某个指定的元素位置(从左到右，首次出现的位置)
+			 	参数：
+			 		[起始位置]：默认从0开始
+			 	返回值：
+			 		找到返回位置，没找到返回-1
+            3.lastIndexOf
+                array.lastIndexOf(目标值，[开始位置])
+                    找到目标值首次出现的位置，从右往左
+                    参数：
+                        [起始位置]：默认从最后一位开始
+                    返回值：
+                        找到返回位置，没找到返回-1
+			 * */
+        var arr = [1, 2, 3, 4, 4, 5, 5, 6, 7, 8, 9];
+        console.log(arr.slice());//[1, 2, 3, 4, 5]
+        console.log(arr.slice(-1));//[5]
+        console.log(arr.slice(1, 2));//[2] 不包含结束位置
+
+        console.log(arr.indexOf(2, 0));//1
+        console.log(arr.indexOf(22, 0));//-1  
+
+        console.log(arr.lastIndexOf(2));//1
+        console.log(arr.lastIndexOf(4, 5));//4
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        /*
+             Array.from(类数组)
+                把类数组转成数组
+
+            Array.from(object, mapFunction, thisValue)
+                object:必需，要转换为数组的对象。
+                mapFunction:可选，数组中每个元素要调用的函数。
+                thisValue:可选，映射函数(mapFunction)中的 this 对象。
+
+        * */
+
+        /*
+            array.every(function((currentValue, index,arr){
+                return 条件
+            })
+            currentValue:当前元素（数组的内容）
+            index:当前元素的索引值。
+            arr:当前元素所属的数组对象。（数组本身）
+
+            作用：检测数组所有元素是否都符合指定条件（通过函数提供）。
+            every() 方法使用指定函数检测数组中的所有元素：
+
+            注意： every() 不会对空数组进行检测。
+
+            注意： every() 不会改变原始数组。
+
+            返回值：
+                所有的return的结果都是true，才返回true，有一个是false,就返回false
+        *
+        * */
+        // from
+        // var lis = document.getElementsByTagName('li');
+        // var arr = Array.from(lis);
+        // arr.pop();
+        // console.log(arr);
+        //every
+        var arr = [1, 2, 3, 4, 5];
+        console.log(arr.every(function (item, index, arr) {
+            // return item > 3 //false
+            return item > 0 //true
+        }))
+    </script>
+</body>
+
+</html>

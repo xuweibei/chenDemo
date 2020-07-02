@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+           1.concat
+            array.concat(数据1,数据2...)
+                用于连接两个或多个数组。
+                把原数组和传入的数据放到新数组里返回
+                注意和push的区别
+                返回值：
+                    新数组
+                注意：
+                    该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。
+            2.reverse
+                array.reverse()
+			 		颠倒数组中元素的顺序。
+			 		返回值：
+			 			调换位置后的数组
+        */
+        var arr = [];
+        var arr1 = [1, 2, 3];
+        var arr2 = [4, 5, 6];
+        console.log(arr.concat(arr1, arr2));//[1, 2, 3, 4, 5, 6]
+        console.log(arr);//[]
+
+        var arr3 = [1, 2, 'qq', 4];
+        console.log(arr3.reverse());
+        // 颠倒一个字符串
+        var str = 'abcd';
+        console.log(str.split('').reverse().join(''));//dcba
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>splice</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1.splice
+            array.splice(位置,删除长度,添加数据1,添加数据2...)
+            删除 替换 添加
+            参数：
+                位置：要操作的起始位置
+                删除长度(可选)：如果是添加就写0，替换和删除写删除的个数
+                添加数据(可选)：要添加的新数据
+            删除：splice(位置，删除的长度)
+            替换：splice(位置，删除的长度，需要替换的数据)
+            添加：splice(位置,0,添加的数据)
+
+            返回值：数组，有删除的，把删除的数据放到数组里，如果没有删除，就空数组
+
+        */
+        var arr = [1, 2, 3, 4, 5];
+        console.log(arr.splice())//[]  空数组
+
+        //从0位开始 删除 1一个
+        console.log(arr.splice(0, 1));//[1]
+        console.log(arr);//[2,3,4,5]
+
+        // 替换
+        var arr1 = [1, 2, 3, 4];
+        console.log(arr1.splice(0, 1, 'aaaa'));//[1]
+        console.log(arr1);//['aaaa',2,3,4]
+
+        // 添加
+        var arr2 = [1, 2, 3, 4];
+        console.log(arr2.splice(1, 0, 'haha'));//[]
+        console.log(arr2);//[1,'haha',3,4]
+    </script>
+</body>
+
+</html>

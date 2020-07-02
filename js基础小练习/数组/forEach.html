@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </ul>
+    <script>
+        /*
+            1.forEach
+                array.forEach(function(currentValue,index,arr){
+
+			 	})
+                currentValue:当前元素（数组的内容）
+			 	index:当前元素的索引值。
+			 	arr:当前元素所属的数组对象。（数组本身）
+            作用：用于调用数组的每个元素，并将元素传递给回调函数。
+        */
+        // var arr = ['aa', 'b', 3, 4]
+        // arr.forEach(function (a, b, c) {
+        //     console.log(a, b, c)
+        // })
+
+        var lis = document.getElementsByTagName('li');
+        // var arr = [];
+        // for (var i = 0; i < lis.length; i++) {
+        //     arr.push(lis[i]);
+        // }
+        // arr.forEach(function (item, index, arr) {
+        //     item.onclick = function () {
+        //         for (var i = 0; i < lis.length; i++) {
+        //             lis[i].style.background = '';
+        //         }
+        //         arr[index].style.background = 'red';
+        //     }
+        // })
+        var ele = null;
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function () {
+                if (ele) {
+                    ele.style.background = '';
+                }
+                this.style.background = 'red';
+                ele = this;
+            }
+        }
+    </script>
+</body>
+
+</html>

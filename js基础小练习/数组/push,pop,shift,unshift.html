@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        1.push
+            array.push(数据1,数据2...)
+                向数组的尾部添加数据
+                返回值：	新数组的长度
+        2.pop
+            array.pop()
+                删除数组的最后一个元素
+                返回值：删除的元素。
+        3.unshift
+            array.unshift(数据1,数据2...)
+                向数组头部添加数据
+            	返回值：新数组的长度
+
+        4.shift
+            array.shift()
+                把数组的第一个元素从其中删除，
+                返回值：第一个元素的值。
+        *
+        * */
+        // 往后添加
+        // var arr = [1, 2, 3];
+        // console.log(arr.push('abc'));//返回数组的长度  4
+        // console.log(arr);//[1,2,3,'abc'];
+
+        // 删除最后一位
+        // var arr1 = [1, 2, 3, 4];
+        // console.log(arr1.pop())//4
+        // console.log(arr1);//[1,2,3]
+
+        //往头部添加
+        // var arr2 = [5, 6, 7]
+        // console.log(arr2.unshift('haha'));//返回数组的长度  4
+        // console.log(arr2);
+
+        //删除第一个
+        // var arr3 = [5, 6, 7]
+        // console.log(arr3.shift());//5
+        // console.log(arr3);//[6,7]
+
+        //前后调换位置
+        var arr4 = [1, 2, 3, 4];
+        arr4.unshift(arr4.pop())
+        console.log(arr4);//[1,2,3,1]
+        //第一个放到最后一位
+        var arr5 = [1, 2, 3, 4];
+        arr5.push(arr5.shift())
+        console.log(arr5);//[2,3,4,1]
+
+    </script>
+</body>
+
+</html>
