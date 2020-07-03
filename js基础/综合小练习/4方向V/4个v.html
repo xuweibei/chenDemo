@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            margin-top: 50px;
+            position: relative;
+            border: 1px solid #000;
+            width: 300px;
+            height: 300px;
+        }
+
+        #box div {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="按钮" id="btn" />
+    <div id="box"></div>
+    <script>
+        var btn = document.getElementById('btn');
+        var box = document.getElementById('box');
+        var len = 5;
+        var str = '';
+
+        // (0,0)               (200,0)
+        //     (50,50)     (150,50)
+        //         (100,100)
+        //     (50,150)    (150,150)
+        // (0,200)             (200,200)
+
+        // 上
+        // l=i*50
+        /*
+            i>3  t=i*5;
+            i<3  t=(Math.Ceil(len/2))
+        */
+        var n = 0;
+        tab();
+        btn.onclick = function () {
+            str = '';
+            n++;
+            if (n > 3) {
+                n = 0;
+            }
+            tab();
+
+        }
+        function tab() {
+            for (var i = 0; i < len; i++) {
+                if (n == 0) {
+                    var l = 50 * i;
+                    if (i < Math.ceil(len / 2)) {
+                        var t = i * 50;
+                    } else {
+                        var t = (len - 1 - i) * 50;
+                    }
+                } else if (n == 1) {
+                    var t = i * 50;
+                    if (i < Math.ceil(len / 2)) {
+                        var l = (len - i) * 50;
+                    } else {
+                        var l = (i + 1) * 50;
+                    }
+                } else if (n == 2) {
+                    var l = i * 50;
+                    if (i < Math.ceil(len / 2)) {
+                        var t = (len - i) * 50;
+                    } else {
+                        var t = (i + 1) * 50;
+                    }
+                } else if (n == 3) {
+                    var t = i * 50;
+                    if (i < Math.ceil(len / 2)) {
+                        var l = i * 50;
+                    } else {
+                        var l = (len - 1 - i) * 50;
+                    }
+                }
+                str += '<div style="left:' + l + 'px;top:' + t + 'px"></div>'
+            }
+
+            box.innerHTML = str;
+        }
+    </script>
+</body>
+
+</html>

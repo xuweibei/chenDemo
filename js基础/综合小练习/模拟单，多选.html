@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+            padding: 10px 20px;
+            float: left;
+            margin-right: 10px;
+            border: 5px solid #000;
+        }
+
+        .active {
+            border-color: red;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="javascript:;">男</a>
+    <a href="javascript:;">女</a>
+    <a href="javascript:;">老神仙</a>
+    <script>
+        //单选
+        var as = document.getElementsByTagName('a');
+        /*
+        var preav = null;
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                if (preav) {
+                    preav.className = '';
+                }
+                this.className = 'active';
+                preav = this;
+            }
+        }
+        */
+
+        //多选
+
+        for (var i = 0; i < as.length; i++) {
+            as[i].onOff = false;
+            as[i].onclick = function () {
+                if (this.onOff) {
+                    this.className = '';
+                } else {
+                    this.className = 'active';
+                }
+                this.onOff = !this.onOff;
+
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>擦出图片</title>
+    <style>
+        #wrap {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            background: url(images/pic.jpg);
+            background-size: 500px 500px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #wrap div {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #fff;
+            background-color: rgba(0, 0, 0, 0.9);
+            background-size: 50px 50px;
+            position: absolute;
+            transition: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap"></div>
+    <script>
+        var wrap = document.getElementById('wrap');
+        var len = 100;
+        var str = '';
+        var l = 0;
+        var t = 0;
+        for (var i = 0; i < len; i++) {
+            // Math.floor向下取整
+            l = i % 10 * 50;
+            t = Math.floor(i / 10) * 50;
+            str += '<div style=left:' + l + 'px;top:' + t + 'px></div>'
+        }
+        wrap.innerHTML = str;
+        var divs = wrap.getElementsByTagName('div');
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].onmouseover = function () {
+                this.style.opacity = '0';
+                this.style.transform = "scale(0)";
+
+            }
+        }
+    </script>
+</body>
+
+</html>
