@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        ul,
+        p {
+            width: 300px;
+            padding: 0;
+            margin: 0;
+            margin: 0 auto;
+        }
+
+        p {
+            padding-top: 20px;
+        }
+
+        li {
+            list-style: none;
+            border-bottom: 1px solid #333;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .hover {
+            background-color: black;
+            color: #fff;
+        }
+
+        .checked {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <li><input type="checkbox" />信乐团 - 海阔天空</li>
+        <li><input type="checkbox" />五月天 - 倔强</li>
+        <li><input type="checkbox" />薛之谦 - 演员</li>
+        <li><input type="checkbox" />杨宗纬 - 一次就好</li>
+        <li><input type="checkbox" />周杰伦 - 安静</li>
+    </ul>
+    <p><input type="checkbox" id="all" /> 全选</p>
+
+    <script>
+        /*
+              分析：
+                    1.移入li
+                        选中
+                            不变
+                        未选中
+                            变黑
+                    2.移出
+                        选中
+                            不用还原
+                        未选中
+                            还原
+                    	
+                    3.点击Input
+                        选中	
+                            li变绿
+                        取消
+                            变黑
+                        判断是否全选
+                            全选
+                                全选勾
+                            未全选
+                                全选勾取消
+                            	
+                    4.全选
+                        选中
+                            全勾，全绿
+                        取消
+                            全不勾，还原色
+         * 
+         * 
+         * */
+        var ul = document.getElementsByTagName('ul')[0];
+        var lis = ul.getElementsByTagName('li');
+        var inps = ul.getElementsByTagName('input');
+        var all = document.getElementById('all');
+
+        //初始化，隔行变色，给5个li变色，重复的事情用for,每隔XX干的事情用%
+        for (var i = 0; i < lis.length; i++) {
+            if (i % 2) {
+                lis[i].className = 'yellow';
+            } else {
+                lis[i].className = 'red';
+            }
+        }
+        //li移入移出
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = i;
+            lis[i].color = lis[i].className;
+            lis[i].onmouseover = function () {
+                if (!inps[this.index].checked) {
+                    this.className = 'hover';
+                }
+
+            }
+            lis[i].onmouseout = function () {
+                if (!inps[this.index].checked) {
+                    if (this.index % 2) {
+                        this.className = 'yellow';
+                    } else {
+                        this.className = 'red';
+                    }
+                }
+            }
+        }
+        //input点击
+        for (var i = 0; i < inps.length; i++) {
+            inps[i].index = i;
+            inps[i].onclick = function () {
+                // 选中
+                if (this.checked) {
+                    lis[this.index].className = 'checked';
+                } else {
+                    //未选中
+                    lis[this.index].className = 'hover';
+                }
+                // 判断是否全选
+                var num = 1;
+                for (var i = 0; i < inps.length; i++) {
+                    num *= inps[i].checked;
+                }
+                if (num) {
+                    all.checked = true;
+                } else {
+                    all.checked = false;
+                }
+
+            }
+        }
+        // 全选
+        all.onclick = function () {
+            for (var i = 0; i < lis.length; i++) {
+                if (this.checked) {
+                    inps[i].checked = true;
+                    lis[i].className = 'checked';
+                } else {
+                    inps[i].checked = false;
+                    lis[i].className = lis[i].color;
+                }
+
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
