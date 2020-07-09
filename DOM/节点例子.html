@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 200px;
+            margin: 0 auto;
+        }
+
+        ul li {
+            color: #666;
+            background: #eee;
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 20px;
+            list-style: none;
+        }
+
+        ul .focus {
+            font-size: 22px;
+            background: #555;
+            color: #fff;
+        }
+
+        ul .near {
+            font-size: 18px;
+            background: #ccc;
+            color: blue;
+
+        }
+
+        ul .none {
+            background-color: #333;
+            color: #fff;
+        }
+
+        ul .side {
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li class="none">这是首行</li>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>555</li>
+        <li>666</li>
+        <li>777</li>
+        <li>888</li>
+        <li>999</li>
+        <li>000</li>
+        <li class="none">这是末行</li>
+    </ul>
+    <script>
+        var ul = document.getElementById('ul1');
+        var lis = ul.children;
+        var first = ul.firstElementChild;
+        var last = ul.lastElementChild;
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                if (this == first || this == last) {
+                    this.className = 'side';
+                } else {
+                    this.className = 'focus';
+                    this.previousElementSibling.className = this.nextElementSibling.className = 'near';
+                    first.className = last.className = 'none';
+                }
+
+            }
+            lis[i].onmouseout = function () {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                first.className = last.className = 'none';
+
+            }
+        }
+    </script>
+</body>
+
+</html>

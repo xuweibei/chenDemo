@@ -91,7 +91,7 @@
         var lis = ul.getElementsByTagName('li');
         var inps = ul.getElementsByTagName('input');
         var all = document.getElementById('all');
-
+        var num = 0;
         //初始化，隔行变色，给5个li变色，重复的事情用for,每隔XX干的事情用%
         for (var i = 0; i < lis.length; i++) {
             if (i % 2) {
@@ -127,16 +127,57 @@
                 // 选中
                 if (this.checked) {
                     lis[this.index].className = 'checked';
+                    num++;
                 } else {
                     //未选中
                     lis[this.index].className = 'hover';
+                    num--;
                 }
-                // 判断是否全选
-                var num = 1;
+
+                /*
+              判断全选方法1：
+                    如果都选中，true转数字是1，都相乘结果是1，就是全选
+                    有一个未选中，false转数字是0，相乘结果就是0
+                    
+            * 
+            * 
+            * */
+                /*
+                    var num = 1;
+                    for (var i = 0; i < inps.length; i++) {
+                        num *= inps[i].checked;
+                    }
+                    if (num) {
+                        all.checked = true;
+                    } else {
+                        all.checked = false;
+                    }
+             */
+                /*
+                      判断全选方法2：
+                            看每个是否选中，选中就+1，结果是5就证明全选
+                 * */
+                /*
+               
+                var num = 0;
                 for (var i = 0; i < inps.length; i++) {
-                    num *= inps[i].checked;
+                    if (inps[i].checked) {
+                        num++;
+                    }
                 }
-                if (num) {
+                console.log(num)
+                if (num == inps.length) {
+                    all.checked = true;
+                } else {
+                    all.checked = false;
+                }
+                */
+
+                /*
+			 	判断全选方法3：
+			 		在点击每个的过程中，选中++，没选中--
+			 * */
+                if (num == inps.length) {
                     all.checked = true;
                 } else {
                     all.checked = false;

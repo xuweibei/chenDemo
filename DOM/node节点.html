@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">123
+        <!---->
+    </div>
+    <script>
+        /*
+			 * node-节点
+			 *   nodeType
+			 * 		查看节点类型，返回是数字
+			 * 	 nodeName
+			 * 		查看节点名称，返回是字符串
+			 *   nodeValue
+			 * 		查看节点内容，返回：没有是null,有是字符串
+			 * 常用节点
+			 * 	元素节点       1
+			 *  属性节点       2
+			 *  文本节点       3 (文字 换行   空格都是文本节点)
+			 *  注释节点       8
+			 *  文档节点       9 
+			 *
+			 	12种节点类型
+			 *  ELEMENT_NODE 	                1
+				ATTRIBUTE_NODE 	                2
+				TEXT_NODE 	                    3
+				DATA_SECTION_NODE 	            4
+				ENTITY_REFERENCE_NODE 	        5
+				ENTITY_NODE 	                6
+				PROCESSING_INSTRUCTION_NODE 	7
+				COMMENT_NODE 	                8
+				DOCUMENT_NODE 	                9
+				DOCUMENT_TYPE_NODE 	           10
+				DOCUMENT_FRAGMENT_NODE 	       11
+				NOTATION_NODE 	               12
+			 * */
+        var box = document.getElementById('box');
+        console.log(box.nodeType); //1  元素节点
+        console.log(box.childNodes[0].nodeType);//3  文本节点
+        console.log(document.nodeType);//9   文档节点
+        console.log(box.childNodes[1].nodeType);//8 注释节点
+        console.log(box.attributes[0].nodeType);//2 属性节点
+        console.log(box.attributes[0].nodeName);//id  属性名
+        console.log(box.attributes[0].nodeValue); //  box  属性值
+
+    </script>
+</body>
+
+</html>

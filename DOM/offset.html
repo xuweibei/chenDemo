@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 300px;
+            height: 300px;
+            background: red;
+            position: relative;
+
+        }
+
+        #div2 {
+            width: 200px;
+            height: 200px;
+            background: pink;
+            position: absolute;
+            left: 10px;
+        }
+
+        #div3 {
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <div id="div2">
+            <div id="div3"></div>
+            </divid>
+        </div>
+        <script>
+            /*
+            offsetParent:
+                最近的有定位属性的祖先节点
+
+                如果祖先节点都没有定位，那么默认为body
+            */
+
+            /*
+            offsetLeft:
+                左外边框到有定位父级的左内边框的距离。
+
+            offsetTop
+                上外边框到有定位父级的上内边框的距离。
+         */
+            var div1 = document.getElementById('div1');
+            console.log(div1.offsetParent);//body
+            var div2 = document.getElementById('div2');
+            console.log(div2.offsetParent);//div1
+            console.log(div2.offsetLeft)
+
+        </script>
+</body>
+
+</html>
