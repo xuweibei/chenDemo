@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 10px solid #000;
+            background: red;
+            padding: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /*
+            elem.clientWidth/ elem.clientHeight (获取某个元素的宽高)
+            注意：
+                不计算边框
+                加上padding
+            	
+        	
+            elem.offsetWidth / elem.offsetHeight  (获取某个元素的宽高)
+            注意：
+                计算边框
+                加上padding
+            	
+        */
+
+        /*
+		可视区的宽高：
+			document.documentElement.clientWidth/document.documentElement.clientHeight
+			
+	*/
+        var box = document.getElementById('box');
+        console.log(box.clientWidth);// 200+20(padding)=220
+        console.log(box.offsetWidth);//20+20(边框)+20（padding）=240
+        console.log(document.documentElement.clientWidth);//考试区的宽
+
+
+
+        // 居中效果
+        var clientW = document.documentElement.clientWidth;
+        var clientH = document.documentElement.clientHeight;
+        var iW = box.offsetWidth;
+        var iH = box.offsetHeight;
+        box.style.top = (clientH - iH) / 2 + 'px';
+        box.style.left = (clientW - iW) / 2 + 'px';
+    </script>
+</body>
+
+</html>

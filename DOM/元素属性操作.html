@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box" class='div1'></div>
+    <img src="img/pic.jpg" id="img">
+    <script>
+        //获取元素行间的属性
+        //elem.getAttribute('key')
+
+
+        //设置元素的行间属性
+        //elem.setAttribute('key','value')
+
+
+        //删除元素的行间属性
+        //elem.removeAttribute('key')
+
+        // 特点：可以操作行间自定义的属性
+        // 可以获取src，href等相对地址
+
+        var box = document.getElementById('box');
+        // 获取行间属性
+        console.log(box.getAttribute('class'));//div1
+        //设置元素的行间属性
+        // box.setAttribute('index', 'index1');
+        // console.log(box);//<div id="box" class="div1" index="index1"></div>
+        //删除元素的行间属性
+        box.removeAttribute('class');
+        console.log(box);//<div id="box"></div>
+
+        var img = document.getElementById('img');
+        console.log(img.getAttribute('src'));//img/pic.jpg
+
+    </script>
+</body>
+
+</html>

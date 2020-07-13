@@ -21,6 +21,7 @@
             background: pink;
             position: absolute;
             left: 10px;
+            top: 20px;
         }
 
         #div3 {
@@ -47,17 +48,17 @@
 
             /*
             offsetLeft:
-                左外边框到有定位父级的左内边框的距离。
+                左外边框到 有 定位父级的左内边框的距离。
 
             offsetTop
-                上外边框到有定位父级的上内边框的距离。
+                上外边框到 有 定位父级的上内边框的距离。
          */
             var div1 = document.getElementById('div1');
             console.log(div1.offsetParent);//body
             var div2 = document.getElementById('div2');
             console.log(div2.offsetParent);//div1
-            console.log(div2.offsetLeft)
-
+            console.log(div2.offsetLeft);//10
+            console.log(div2.offsetTop);//20
         </script>
 </body>
 
