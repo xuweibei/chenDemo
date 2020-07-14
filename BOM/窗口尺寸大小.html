@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body style="height: 2000px;">
+
+    <script>
+        /*
+		可视区的尺寸
+		document.documentElement.clientWidth
+		document.documentElement.clientHeight
+
+	    */
+        /*
+            滚动条滚动距离
+                document.documentElement.scrollTop[scrollLeft]
+              
+            
+            */
+        // 兼容写法
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        console.log(scrollTop)
+
+        // 内容宽高  elem.scrollHeight/scrollWidth
+        console.log(document.body.scrollHeight);
+
+        // 文档高度
+        // document.documentElement.offsetHeight
+
+
+    </script>
+</body s>
+
+</html>

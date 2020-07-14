@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="test.html">百度</a>
+    <input type="button" value="前进" id="btn" />
+    <script>
+        /*
+            history:用户（在浏览器窗口中）访问过的 URL。
+                自身窗口，只要地址栏改变了，就会产生一条历史记录，可供前进后退
+                历史记录对象
+                length:几条记录
+                go(0):跳到第几条记录，扩号里的数字代表第几个记录，number
+                back()后退
+                forward()前进
+         *
+         * */
+        // console.log(window.history.length); //只要地址栏改变了，就会产生一条历史记录
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            // history.back();
+            history.forward()
+        }
+
+
+
+    </script>
+</body>
+
+</html>

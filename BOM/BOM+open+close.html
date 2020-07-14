@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="按钮" id="btn" />
+    <iframe src="" name="iframe"></iframe>
+    <input type="button" value="点击关闭">
+    <script>
+
+        /*
+            open(URL,name,style,布尔值)
+                    打开窗口
+            返回值：新页面的window
+            参数：
+                    URL：地址，string,'http://www.baidu.com',不写http是本地
+                    name:打开方式，框架名name
+                        如果写的框架名找不到，会新窗口打开
+                        '_blank'：新窗口
+                        '_self'：自身窗口
+                        '_top':最顶层框架
+                        '_parent':父框架
+                    下面的很少使用
+                    style:只有在新窗口打开才能设置，'width=100px,height=100px'
+                    布尔值：是否保存历史记录
+        * */
+
+
+        // close() 方法 关闭窗口
+
+        //window.close();
+		/*
+			1. ff : 无法关闭
+			2. chrome : 直接关闭
+			3. ie : 询问用户
+		*/
+
+
+        // var btn = document.getElementById('btn');
+        // btn.onclick = function () {
+        //     // open();//默认为新窗口方式打开
+        //     // open('http://www.baidu.com');//新窗口打开 百度首页
+        //     // open('1.html');//新窗口打开 但是文件找不到
+        //     // open('http://www.baidu.com', '_blank');//新窗口打开
+        //     // open('http://www.baidu.com', 'iframe');//在iframe中打开百度
+        //     // open('http://www.baidu.com', '_blank', 'width=100px,height=100px');
+        //     var opener = window.open();
+        //     opener.document.body.style.background = 'red';//新窗口到开，并且新窗口body背景色为红色
+
+        // }
+
+
+        // close
+        var btn2 = document.getElementsByTagName('input')[1];
+        btn2.onclick = function () {
+            window.close();//关闭当前窗口
+        }
+    </script>
+</body>
+
+</html>

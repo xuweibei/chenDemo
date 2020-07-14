@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="选中文本框的内容">
+    <input type="text" value="内容">
+    <script>
+
+        /*
+焦点 : 使浏览器能够区分用户输入的对象，当一个元素有焦点的时候，那么他就可以接收用户的输入。
+我们可以通过一些方式给元素设置焦点
+	1.点击
+	2.tab
+	3.js
+	
+	不是所有元素都能够接收焦点的.能够响应用户操作的元素才有焦点
+*/
+
+        //onfocus : 当元素获取到焦点的时候触发
+        //onblur : 当元素失去焦点的时候触发
+    	/*
+		obj.focus() 给指定的元素设置焦点
+		obj.blur() 取消指定元素的焦点
+		obj.select() 选择指定元素里面的文本内容
+	*/
+        var inp = document.getElementsByTagName('input')
+        inp[0].onclick = function () {
+
+            inp[1].select();
+        }
+        inp[1].focus();
+        // inp[1].onfocus = function () {
+
+        // }
+    </script>
+</body>
+
+</html>

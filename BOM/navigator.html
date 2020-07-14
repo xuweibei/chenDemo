@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            navigator
+                浏览器信息对象
+                navigator.userAgent
+                浏览器信息
+        * */
+
+        /*
+        window.navigator.userAgent -> 浏览器信息
+        */
+        // alert(window.navigator.userAgent)
+
+
+        if (window.navigator.userAgent.indexOf("Chrome") > -1 && window.navigator.userAgent.indexOf("Safari") > -1) {
+            alert('我是Chrome');
+        } else {
+            alert('我不是Chrome');
+        }
+
+
+    </script>
+</body>
+
+</html>
