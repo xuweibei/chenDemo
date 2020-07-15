@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            /* width: 160px;
+            height: 100px; */
+            position: absolute;
+            border: 1px solid red;
+            display: none;
+            /* top: 100px;
+            left: 100px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <script>
+        var div = document.getElementById('div1');
+        var t = 0;
+        var l = 0;
+        // setTimeout(() => {
+
+        //     div.style.transform = 'rotateX(180deg) rotateY(180deg)';
+        //     div.style.transformOrigin = '0 0'
+        // }, 1000)
+        // return;
+        document.addEventListener('mousedown', function (ev) {
+            div.style.display = 'block';
+            div.style.width = 0;
+            div.style.height = 0;
+            t = ev.clientY;
+            l = ev.clientX;
+            div.style.top = t + 'px';
+            div.style.left = l + 'px';
+            document.addEventListener('mousemove', function (ev) {
+
+                var nowT = ev.clientY;
+                var nowL = ev.clientX;
+                if (nowT < t && nowL > l) {
+                    div.style.transform = 'rotateX(180deg)';
+                    div.style.transformOrigin = '0 0';
+                    div.style.width = nowL - l + 'px';
+                    div.style.height = t - nowT + 'px';
+                } else if (t < nowT && l < nowL) {
+                    div.style.transform = 'rotateX(0deg)';
+                    div.style.height = nowT - t + 'px';
+                    div.style.width = nowL - l + 'px';
+
+                }
+                if (t < nowT && nowL < l) {
+                    div.style.transform = 'rotateY(180deg)';
+                    div.style.transformOrigin = '0 0';
+                    div.style.width = l - nowL + 'px';
+                    div.style.height = nowT - t + 'px';
+                } else if (t > nowT && nowL < l) {
+                    div.style.transform = 'rotateX(180deg) rotateY(180deg)';
+                    div.style.height = t - nowT + 'px';
+                    div.style.width = l - nowL + 'px';
+                }
+
+
+            })
+        });
+        document.addEventListener('mouseup', function () {
+            div.style.display = 'none';
+            div.style.width = 0;
+            div.style.height = 0;
+        })
+
+    </script>
+</body>
+
+</html>

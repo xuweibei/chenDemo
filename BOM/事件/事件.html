@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body style="height: 2000px; width:2000px">
+    <script>
+        /*
+            UI事件
+            鼠标事件
+            键盘文本事件
+            焦点事件
+            表单事件
+            ...
+        *
+        * */
+
+        /*
+         UI事件
+               和浏览器相关
+               load,scroll,resize
+
+                onload
+                    文档，图片加载完执行事件
+                onscroll
+                    元素滚动条在滚动时触发。
+                onresize
+                    窗口或框架被调整大小时发生。
+
+         * */
+
+        /*
+        onscroll
+            滚动条滚动触发的事件,时间间隔触发的，不是1px触发一次
+        
+        获取滚动距离
+       只能获取不能设置	 	window.pageYOffset/window.pageXOffset
+       设置滚动距离
+       window.scrollTo(x,y)
+   	
+       可以获取也可以设置
+       document.documentElement.scrollTop
+         * */
+
+
+        // window.onload = function () {
+        //     console.log('加载完成！')
+        // }
+
+        // window.onresize = function () {
+        //     console.log('改变窗口大小')
+        // }
+        window.onscroll = function () {
+            //获取滚动距离
+            console.log(window.pageYOffset);
+            console.log(document.documentElement.scrollTop);
+        }
+        // 设置
+        document.onclick = function () {
+            // document.documentElement.scrollTop = 1000;
+            window.scrollTo(100, 100);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        // onkeydown:当键盘按下的时候触发(如果按下不抬起，会连续触发)
+        // onkeyup:当键盘抬起的时候触发
+        // event.keyCode数字类型   键盘按键的值  键值
+        /*
+         功能键(布尔值)
+            true:按着，false:没按
+            altKey
+            shiftKey
+            ctrlKey
+            当一个事件发生的时候如果 ctrl || shift || alt是按下的状态，返回true，否则返回false；
+        */
+
+        document.onkeydown = function (ev) {
+            console.log(ev.keyCode);
+        }
+    </script>
+</body>
+
+</html>

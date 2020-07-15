@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="text1" />
+    <ul id="ul1"></ul>
+    <script>
+        var txt = document.getElementById('text1');
+        var ul = document.getElementById('ul1');
+        txt.onkeyup = function (ev) {
+            var ev = ev || event;
+            if (this.value != '') {
+                if (ev.keyCode == 13 && ev.ctrlKey) {//按住ctrl+回车
+                    var li = document.createElement('li');
+                    li.innerHTML = this.value;
+                    if (ul.children[0]) {
+                        ul.insertBefore(li, ul.children[0]);
+                    } else {
+                        ul.appendChild(li);
+                    }
+                }
+
+            }
+        }
+    </script>
+</body>
+
+</html>
