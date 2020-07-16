@@ -21,14 +21,7 @@
     <div id="div1"></div>
     <script>
         var div = document.getElementById('div1');
-        var t = 0;
-        var l = 0;
-        // setTimeout(() => {
-
-        //     div.style.transform = 'rotateX(180deg) rotateY(180deg)';
-        //     div.style.transformOrigin = '0 0'
-        // }, 1000)
-        // return;
+        var t, l;
         document.addEventListener('mousedown', function (ev) {
             div.style.display = 'block';
             div.style.width = 0;
@@ -38,7 +31,6 @@
             div.style.top = t + 'px';
             div.style.left = l + 'px';
             document.addEventListener('mousemove', function (ev) {
-
                 var nowT = ev.clientY;
                 var nowL = ev.clientX;
                 if (nowT < t && nowL > l) {

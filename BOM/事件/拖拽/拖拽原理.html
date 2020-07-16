@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">111111</div>
+    <script>
+        /*
+              鼠标按下
+                    元素上按下，记录按下坐标到元素原点的距离
+              鼠标移动
+                    document,鼠标坐标-记录的距离=元素的定位坐标
+              鼠标抬起
+                    移动解绑
+                    抬起解绑
+         *
+         * */
+
+        // Element.getBoundingClientRect()
+
+        // Element.offsetTop
+
+        // 前者指元素（比如某个div）距离可视区域顶部的距离，后者包括滚动条卷起的部分。
+
+        // js原生的offsetTop属性有很多浏览器兼容性问题，用时要慎重。
+
+        /*
+        拖拽问题
+        拖拽的时候，如果有文字被选中，会产生问题
+            原因：当鼠标按下的时候，如果页面中有文字被选中，那么会触发浏览器默认拖拽文字的效果
+            解决：鼠标按下的时候  阻止默认行为
+        */
+
+
+        var box = document.getElementById('box');
+        box.onmousedown = function (ev) {
+            ev.preventDefault();
+            var ev = ev || event;
+            var disX = ev.clientX - this.getBoundingClientRect().left;
+            var disY = ev.clientY - this.getBoundingClientRect().top;
+            document.onmousemove = function (ev) {
+                var l = ev.clientX - disX;
+                var t = ev.clientY - disY;
+                box.style.left = l + 'px';
+                box.style.top = t + 'px';
+            }
+            document.onmouseup = function () {
+                document.onmousemove = document.onmouseup = null;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

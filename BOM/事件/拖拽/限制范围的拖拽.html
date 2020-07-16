@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 200px;
+
+        }
+
+        #box1 {
+            background: red;
+            top: 20px;
+        }
+
+        #box2 {
+            background: green;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+        var box1 = document.getElementById('box1');
+        var box2 = document.getElementById('box2');
+        drag(box1);
+        drag(box2);
+        function drag(obj) {
+            obj.onmousedown = function (ev) {
+                ev.preventDefault();
+                var ev = ev || event;
+                var disX = ev.clientX - this.getBoundingClientRect().left;
+                var disY = ev.clientY - this.getBoundingClientRect().top;
+                document.onmousemove = function (ev) {
+                    var l = ev.clientX - disX;
+                    var t = ev.clientY - disY;
+                    var maxL = document.documentElement.clientWidth - obj.getBoundingClientRect().width;
+                    var maxT = document.documentElement.clientHeight - obj.getBoundingClientRect().height;
+                    if (l < 0) {
+                        l = 0;
+                    } else if (l > maxL) {
+                        l = maxL;
+                    } else if (t < 0) {
+                        t = 0;
+                    } else if (t > maxT) {
+                        t = maxT;
+                    }
+
+
+                    obj.style.left = l + 'px';
+                    obj.style.top = t + 'px';
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = null;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

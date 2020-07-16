@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            /* width: 160px;
+            height: 100px; */
+            position: absolute;
+            border: 1px solid red;
+            display: none;
+            /* top: 100px;
+            left: 100px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <script>
+        var div = document.getElementById('div1');
+        var oL, oT;
+        var onOff = false;
+        document.addEventListener('mousedown', function (ev) {
+
+            var ev = ev || event;
+            oL = ev.clientX;
+            oT = ev.clientY;
+            div.style.display = 'block';
+            onOff = true;
+
+        });
+        document.addEventListener('mousemove', function (ev) {
+            if (onOff) {
+                var ev = ev || event;
+                var iL = ev.clientX;
+                var iT = ev.clientY;
+                var w = Math.abs(iL - oL);
+                var h = Math.abs(iT - oT);
+                var l = iL > oL ? oL : iL;
+                var t = iT > oT ? oT : iT;
+                div.style.width = w + 'px';
+                div.style.height = h + 'px';
+                div.style.top = t + 'px';
+                div.style.left = l + 'px';
+            }
+        })
+        document.addEventListener('mouseup', function () {
+            div.style.cssText = '';
+            onOff = false;
+        })
+
+
+    </script>
+</body>
+
+</html>

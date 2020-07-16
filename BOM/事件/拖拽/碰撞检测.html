@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+
+
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+
+            background: red;
+            top: 300px;
+            left: 400px;
+        }
+
+        #box2 {
+            background: green;
+            top: 0px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        var box = document.getElementById('box');
+        var box2 = document.getElementById('box2');
+
+        drag(box2);
+        function drag(obj) {
+            obj.onmousedown = function (ev) {
+                ev.preventDefault();
+                var ev = ev || event;
+                var disX = ev.clientX - this.getBoundingClientRect().left;
+                var disY = ev.clientY - this.getBoundingClientRect().top;
+                document.onmousemove = function (ev) {
+                    var l = ev.clientX - disX;
+                    var t = ev.clientY - disY;
+                    var L1 = l;
+                    var R1 = l + obj.getBoundingClientRect().width;
+                    var T1 = t;
+                    var B1 = t + obj.getBoundingClientRect().height;
+
+                    var L2 = box.offsetLeft;
+                    var R2 = L2 + box.offsetWidth;
+                    var T2 = box.offsetTop;
+                    var B2 = T2 + box.offsetHeight;
+                    if (R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2) {
+                        box.style.background = 'red';
+                    } else {
+                        box.style.background = 'yellow';
+                    }
+                    obj.style.left = l + 'px';
+                    obj.style.top = t + 'px';
+                }
+                document.onmouseup = function () {
+                    document.onmousemove = document.onmouseup = null;
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>
