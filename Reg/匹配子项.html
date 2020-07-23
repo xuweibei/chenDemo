@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //匹配子项 : 小括号 ()  (还有另外一个意思，分组操作)
+
+        //把正则的整体叫做（母亲）
+        //然后把左边第一个小括号里面的正则，叫做这个第一个子项(母亲的第一个孩子)
+        //第二个小括号就是第二个孩子
+        // var re = /(第一个孩子)(第二个孩子)/;
+
+
+
+        var str = '2020-7-23';
+        var re = /(\d+)(-)/g;
+        str = str.replace(re, function ($0, $1, $2) {
+            // $0匹配成功的字符
+            //第一个参数：$0（母亲）,第二个参数 : $1(第一个孩子)
+            //,第二个参数 : $1(第二个孩子)
+            // console.log($0);//2020-   7-
+            // console.log($1);//2020  7
+            //console.log($2);//-   -
+
+            // return $1 + '.';
+            return $0.substring(0, $0.length - 1) + '.'
+        })
+        console.log(str);//2020.7.23
+
+
+
+        var str = 'abc';
+
+        var re = /(a)(b)(c)/;
+
+        alert(str.match(re));  //[abc,a,b,c](当match不加g的时候才可以获取到子项的集合)
+    </script>
+</body>
+
+</html>

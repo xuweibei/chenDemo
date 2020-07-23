@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    替换前<br />
+    <textarea></textarea><br />
+    替换后<br />
+    <textarea>
+    </textarea><br />
+    <input type="button" value="确定" id="input1" />
+
+    <script>
+        // | : 或的意思
+        var textA = document.getElementsByTagName('textarea');
+        var btn = document.getElementById('input1');
+        btn.onclick = function () {
+            var re = /你大爷|滚/g;
+            // textA[1].value = textA[0].value.replace(re, '*');
+            textA[1].value = textA[0].value.replace(re, function (str) {
+                //函数的第一个参数：就是匹配成功的字符(你大爷或滚)	 
+                var result = '';
+                for (var i = 0; i < str.length; i++) {
+                    result += '*'
+                }
+                return result;
+            });
+        }
+    </script>
+</body>
+
+</html>

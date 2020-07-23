@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        []   任意字符  
+            匹配所包含的任意一个字符  
+            [] 中括号的整体代表一个字符
+         */
+        /*
+        [^]   排除(未包含)
+            匹配未包含的任意字符
+            如果^写在[]里面的话，就代表排除的意思
+        */
+        // 任意字符
+        // var str = 'ade';
+        // var re = /a[bcd]e/; //ace ace ade
+        // console.log(re.test(str));
+
+        // 排除
+        var str = 'ade';
+        var re = /a[^bcd]e/;//除了bcd以外
+        console.log(re.test(str));//false
+
+
+    </script>
+</body>
+
+</html>
