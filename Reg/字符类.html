@@ -20,15 +20,27 @@
             匹配未包含的任意字符
             如果^写在[]里面的话，就代表排除的意思
         */
+        /*
+        [A-Z]    范围
+            字符范围。匹配指定范围内的任意字符。
+            组合：[A-Z0-9a-z]
+
+        */
         // 任意字符
         // var str = 'ade';
         // var re = /a[bcd]e/; //ace ace ade
         // console.log(re.test(str));
 
         // 排除
-        var str = 'ade';
-        var re = /a[^bcd]e/;//除了bcd以外
-        console.log(re.test(str));//false
+        // var str = 'ade';
+        // var re = /a[^bcd]e/;//除了bcd以外
+        // console.log(re.test(str));//false
+        // 范围
+        var str = 'a1td4r5yt11c';
+
+        var re = /a[a-z0-9A-Z]+c/;
+
+        console.log(re.test(str));
 
 
     </script>
