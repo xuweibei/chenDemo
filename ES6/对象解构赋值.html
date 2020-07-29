@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let { a, b } = { a: 1, b: 2 };
+        // console.log(a, b);//1 2
+
+        // let { foo, bar } = { foo: "aaa", bar: "bbb" };
+        // console.log(foo, bar);//aaa  bbb
+
+        //当左边解构赋值之后还取了别名，key值就失效，正确找法，找冒号右边的变量
+        // let { foo: a, bar: b } = { foo: "aaa", bar: "bbb" };
+        // console.log(a, b);//aaa  bbb
+
+
+        // let obj = { first: 'hello', last: 'world' };
+        // let { first: f, last: l } = obj;
+        // console.log(f, l);//hello world
+
+        // 对象的解构也可以指定默认值。
+
+        // var { x = 3 } = {};
+        // console.log(x);//3
+
+        // 默认值生效的条件是，对象的属性值严格等于undefined。
+        var { x } = { x: undefined };
+        console.log(x);//undefined
+
+        var { x = 3 } = { x: undefined };
+        console.log(x);//3
+
+        var { x = 3 } = { x: null };
+        console.log(x);//null
+
+
+        //解构的值并不是克隆，只是读取的一种方式,如果操作，其实还是操作对象本身的属性。
+
+
+        // / 错误的写法
+        // let x;
+        // { x } = { x: 1 };// SyntaxError: syntax error
+        // 因为 JavaScript 引擎会将{x}理解成一个代码块，从而发生语法错误。
+
+        // 正确的写法
+        // let x;
+        // ({ x } = { x: 1 });
+    </script>
+</body>
+
+</html>

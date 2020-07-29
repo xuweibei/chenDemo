@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 之前写法
+        // let fn = function (x, y) {
+        //     return x + y;
+        // }
+        // console.log(fn(10, 20));//30
+
+        // 改写箭头函数
+
+        // let fn = (x, y) => {
+        //     return x + y;
+        // }
+        // // 简写
+        // // let fn = (x, y) => x + y;
+        // console.log(fn(10, 20));//30
+
+
+        // 区别
+        // 箭头函数不支持arguments
+        // 求和（arguments累数组，需要转成数组）
+        /*
+        let fn = function () {
+            let arg = Array.prototype.slice.call(arguments);
+            return eval(arg.join('+'));
+        }
+
+        // let fn = () => {
+        //     console.log(arguments);报错
+        // }
+        console.log(fn(10, 20, 30));
+        */
+        // 剩余运算符（...）
+        // 使用剩余运算符接收到的结果就是一个数组，不需要转换
+        let fn = (...arg) => {
+            // console.log(arg instanceof Array);//true   是数组
+            return eval(arg.join('+'))
+        }
+
+        console.log(fn(10, 20, 30));
+
+    </script>
+</body>
+
+</html>

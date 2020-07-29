@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.typeof: 判断简单数据类型
+        // 2.constructor
+        // 3.instanceof
+        // instanceof : 对象与构造函数在原型链上是否有关系
+        // 4.toString
+        //toString() : 系统对象下面都是自带的 , 自己写的对象都是通过原型链找object下面的
+
+        var str = 'aaa';
+        // console.log(typeof str);//string
+        // console.log(str.constructor);//String
+        // console.log(str.constructor == String);//true
+
+        /*
+        console.log([] instanceof Array) //true
+        console.log({} instanceof Object);//true
+        new Date() instanceof Date;//true
+
+        function Person() { };
+
+        console.log(new Person() instanceof Person);//true
+        console.log([] instanceof Object); //true
+        console.log(new Date() instanceof Object);//true
+        console.log(new Person instanceof Object);//true
+        */
+
+        /*var arr = [];
+        alert( arr.toString == Object.prototype.toString ); //false*/
+
+        /*function Aaa(){
+        }
+        var a1 = new Aaa();
+        alert( a1.toString == Object.prototype.toString );  //true*/
+
+        //toString() : 把对象转成字符串
+
+
+        /*var arr = [1,2,3];
+        
+        Array.prototype.toString = function(){
+            return this.join('+');
+        };
+        
+        alert( arr.toString() );  //'1,2,3'*/
+
+
+        //var num = 255;
+        //alert( num.toString(16) );  //'ff'
+
+
+        //利用toString做类型的判断 : 
+
+        /*var arr = [];
+        
+        alert( Object.prototype.toString.call(arr) == '[object Array]' ); */ //'[object Array]'
+
+        window.onload = function () {
+
+            var oF = document.createElement('iframe');
+            document.body.appendChild(oF);
+
+            var ifArray = window.frames[0].Array;
+
+            var arr = new ifArray();
+
+            //alert( arr.constructor == Array );  //false
+
+            //alert( arr instanceof Array );  //false
+
+            alert(Object.prototype.toString.call(arr) == '[object Array]');//true  //true
+
+
+        };
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //原型链 : 实例对象与原型之间的连接，叫做原型链
+
+        //原型链的最外层 : Object.prototype
+        // __proto__( 隐式连接 )
+
+        // 从里到外找，没找到返回undefined
+
+        function Aa() {//构造函数
+            // this.number = 10;
+        }
+        // Aa.prototype.number = 20;
+        Object.prototype.number = 30;
+        var a1 = new Aa();//创建对象
+        console.log(a1.number);
+        // 构造函数的原型 ===实例化对象的原型链
+        // Aa：构造函数
+        // a1:实例化对象
+        console.log(Aa.prototype === a1.__proto__)
+
+    </script>
+</body>
+
+</html>

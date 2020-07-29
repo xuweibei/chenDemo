@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // hasOwnProperty()  : 看是不是对象自身下面的属性(只有自己有，别人没有)
+        /*
+            var arr = [];
+            arr.num = 10;
+            Array.prototype.num2 = 20;
+            console.log(arr.hasOwnProperty('num'));//true
+            console.log(arr.hasOwnProperty('num2'));//false  所有的数组对象都可以用
+        */
+
+        // constructor: 查看对象的构造函数
+
+        // 每个原型都会自动添加constructor属性
+        // For in 的时候有些属性是找不到的
+        // 避免修改construtor属性
+
+        /*
+        function Aaa() {//构造函数
+
+        }
+        var a1 = new Aaa();//创建一个对象
+        console.log(a1.constructor);//构造函数
+
+        var arr = [];
+        // 可以判断数据类型
+        console.log(arr.constructor == Array);//true
+        */
+        function Aaa() {
+
+        }
+        // Aaa.prototype.constructor = Aaa;//每一个函数都会有的，都是自动生成的
+        Aaa.prototype.constructor = Array;
+        var a1 = new Aaa();
+        console.log(a1.constructor);//构造函数Aaa
+
+
+        var a1 = new Aaa();
+        alert(a1.hasOwnProperty == Object.prototype.hasOwnProperty);  //true*/
+
+    </script>
+</body>
+
+</html>

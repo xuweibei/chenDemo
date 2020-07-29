@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.什么是面向对象
+        // 面向对象是一种编程思想，简单来说就是把具有相同特征的东西归为一类并且返回一个对象, 这个对象的特征挂在构造函数的原型上。
+        //
+
+        /*
+         2.面向对象编程（OOP）的特点
+            抽象：抓住核心问题
+            封装：只能通过对象来访问方法
+            继承：从已有对象上继承出新的对象
+            多态：多对象的不同形态
+        */
+        /*
+        对象的组成
+            方法（行为、操作）——函数：过程、动态的
+            属性——变量：状态、静态的
+        */
+
+        // 创建一个面向对象
+        var obj = new Object();;  //创建了一个空的对象
+        obj.name = '小明';//属性
+        obj.age = '18';//属性
+        obj.showName = function () {//方法
+            console.log(this.name)
+        }
+        obj.showName();
+    </script>
+</body>
+
+</html>

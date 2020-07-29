@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 什么是继承
+        // 在原有对象的基础上，略作修改，得到一个新的对象
+        // 不影响原有对象的功能
+        // 继承：子类不影响父类，子类可以继承父类的一些功能（代码复用）
+
+        // 继承的方法
+        //属性的继承 : 调用父类的构造函数 call
+        //方法的继承 : for in :  拷贝继承 
+
+        function CreatePerson(name, sex) {
+            this.name = name;
+            this.sex = sex;
+        }
+        CreatePerson.prototype.showName = function () {
+            console.log(this.name);
+        }
+        var p1 = new CreatePerson('小明', '男');
+        // console.log(p1.name, p1.sex);
+        // p1.showName();
+        // p1.showJob();//报错，没有这个方法
+
+
+        function CreateStar(name, sex, job) {
+            CreatePerson.call(this, name, sex);//继承属性
+            this.job = job;
+        }
+        CreateStar.prototype.showJob = function () {
+            console.log(this.job);
+        }
+        // 赋址操作，会改变父级方法
+        // CreateStar.prototype = CreatePerson.prototype;
+
+        extend(CreateStar.prototype, CreatePerson.prototype);
+        var p2 = new CreateStar('黄晓明', '男', '演员');
+        // console.log(p2.name, p2.sex, p2.job)
+        p2.showName();
+        p2.showJob();
+
+
+
+        function extend(obj1, obj2) {
+            for (attr in obj2) {
+                obj1[attr] = obj2[attr];
+            }
+        }
+    </script>
+</body>
+
+</html>

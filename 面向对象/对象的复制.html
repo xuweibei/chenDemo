@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //简单数据类型复制不会出问题
+        /*
+         var a = {
+             name: '小明'
+         }
+         var b = a;
+         b.name = '小强'
+         console.log(a.name);//小强
+        */
+        /*
+                var a = {
+                    name: '小明'
+                }
+                // var b = a;
+                var b = {};
+        
+                b.name = '小强';
+                for (attr in a) {
+                    b[attr] = a[attr];
+                }
+                console.log(a.name);//小明
+                */
+        // 封装
+        var a = {
+            name: '小明'
+        }
+        // var b = a;
+        var b = {};
+        extend(b, a);
+
+        b.name = '小强';
+
+
+
+        function extend(obj1, obj2) {
+            for (attr in obj2) {
+                obj1[attr] = obj2[attr];
+            }
+        }
+        console.log(a.name);//小明
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box,
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <script>
+        // 过程式拖拽
+        /*
+         var box = document.getElementById('box');
+         var disX = 0;
+         var disY = 0;
+         box.onmousedown = function (ev) {
+             var ev = ev || window.event;
+             disX = ev.clientX - box.offsetLeft;
+             disY = ev.clientY - box.offsetTop;
+             document.onmousemove = function (ev) {
+                 var ev = ev || window.event;
+                 box.style.left = ev.clientX - disX + 'px';
+                 box.style.top = ev.clientY - disY + 'px';
+
+             }
+             document.onmouseup = function () {
+                 document.onmousemove = document.onmouseup = null;
+             }
+             return false;
+         }
+
+        */
+        //    面向对象式拖拽
+
+        // 1.变型
+        /*
+        var box = null;
+        var disX = 0;
+        var disY = 0;
+
+
+        box = document.getElementById('box');
+        init();
+        function init() {
+            box.onmousedown = fnDown;
+        }
+        function fnDown(ev) {
+            var ev = ev || window.event;
+            disX = ev.clientX - box.offsetLeft;
+            disY = ev.clientY - box.offsetTop;
+            document.onmousemove = fnMove;
+            document.onmouseup = fnUp;
+            return false;
+        }
+        function fnMove(ev) {
+            var ev = ev || window.event;
+            box.style.left = ev.clientX - disX + 'px';
+            box.style.top = ev.clientY - disY + 'px';
+
+        }
+        function fnUp() {
+            document.onmousemove = document.onmouseup = null;
+        }
+        */
+        //改面向对象:
+        function Drag(id) {
+            this.box = document.getElementById(id);
+            this.disX = 0;
+            this.disY = 0;
+        }
+        Drag.prototype.init = function () {
+            var _this = this;
+            this.box.onmousedown = function (ev) {
+                var ev = ev || window.event;
+                _this.disX = ev.clientX - this.offsetLeft;
+                _this.disY = ev.clientY - this.offsetTop;
+                _this.fnMove(ev);
+                return false;
+            }
+        }
+        Drag.prototype.fnMove = function (ev) {
+            var _this = this;
+            document.onmousemove = function () {
+                var ev = ev || window.event;
+                _this.box.style.left = ev.clientX - _this.disX + 'px';
+                _this.box.style.top = ev.clientY - _this.disY + 'px';
+            }
+            document.onmouseup = function () {
+                document.onmousemove = document.onmouseup = null;
+
+            }
+        }
+
+        var d1 = new Drag('box');
+        d1.init();
+        var d2 = new Drag('box2');
+        d2.init();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* let
+          1.声明的变量，只在let命令所在的代码块内有效。
+          2.你存在变量提升
+          3.不允许重复声明
+                let不允许在相同作用域内，重复声明同一个变量。
+        */
+        /*
+        const
+            const声明一个只读的常量。一旦声明，常量的值就不能改变。
+            const的作用域与let命令相同：只在声明所在的块级作用域内有效。
+            const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用。
+            const声明的常量，也与let一样不可重复声明。
+        */
+
+        // 只在let命令所在的代码块内有效。
+        // {
+        //     let a = 10;
+        //     var b = 1;
+        // }
+
+        // console.log(a); // ReferenceError: a is not defined.
+        // console.log(b)   b // 1
+
+
+        // i只在for循环体内有效，在循环体外引用就会报错。
+        // for (let i = 0; i < 10; i++) {
+        //     console.log(i)
+        // }
+        // console.log(i); //ReferenceError: i is not defined
+
+
+        // 不存在变量提升
+        // var 的情况
+        // console.log(foo); // 输出undefined
+        // var foo = 2;
+
+        // // let 的情况
+        // console.log(bar); // 报错ReferenceError
+        // let bar = 2;
+
+        // 不允许重复声明
+        // 报错
+        // function func() {
+        //     let a = 10;
+        //     var a = 1;
+        // }
+
+        // // 报错
+        // function func() {
+        //     let a = 10;
+        //     let a = 1;
+        // }
+        // const
+        const a = 10;
+        console.log(a); //10
+        a = 100;
+        console.log(a);//报错
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原型-prototype
+        // 去改写下面的方法或者属性，让公用的方法或者属性在内存中只存在一份（提高性能）
+        // 原型 - prototype需要写在构造函数的下面
+
+
+        // 原型求和方法
+        var arr = [1, 2, 3, 4, 5];
+        var arr2 = [1, 1, 2, 2];
+        Array.prototype.sum = function () {
+            var result = 0;
+            for (var i = 0; i < this.length; i++) {
+                result += this[i];
+
+            }
+            return result;
+        }
+        console.log(arr.sum());//15
+        console.log(arr2.sum());//6
+
+
+
+
+    </script>
+</body>
+
+</html>

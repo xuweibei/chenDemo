@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="txt">
+    <ul id="list">
+        <!-- <li>饭是哈佛额外i热风 <input type="button" value="删除"></li> -->
+    </ul>
+    <!-- <script>
+        const txt = document.getElementById('txt');
+        const list = document.getElementById('list');
+        let str = '';
+        txt.onkeyup = function (ev) {
+            let val = this.value;
+
+            if (ev.keyCode === 13) {
+                if (val == '') {
+                    alert('请输入内容！');
+                    return;
+                }
+                str += ' <li>' + val + ' <input type="button" value="删除"></li>'
+
+            }
+            list.innerHTML = str;
+            let lis = list.getElementsByTagName('li');
+            for (var i = 0; i < lis.length; i++) {
+                let close = lis[i].getElementsByTagName('input')[0];
+                close.onclick = function () {
+                    list.removeChild(this.parentNode);
+                }
+            }
+            this.value = '';
+        }
+
+    </script> -->
+    <script>
+        let arr = [{
+            value: 'aa',
+            time: '121312'
+        }];
+        const txt = document.getElementById('txt');
+        const list = document.getElementById('list');
+        renderLi();
+        closeFn();
+        txt.onkeyup = function (ev) {
+            let val = this.value;
+            if (ev.keyCode === 13) {
+                if (val == '') {
+                    alert('请输入内容！');
+                    return;
+                }
+                let obj = {
+                    value: val,
+                    time: new Date().getTime()
+                }
+                arr.push(obj);
+                renderLi();
+                closeFn();
+            }
+        }
+        function closeFn() {
+            var lis = list.getElementsByTagName('li');
+            for (var i = 0; i < lis.length; i++) {
+                let colse = lis[i].getElementsByTagName('input')[0];
+                colse.onclick = function (i) {
+                    arr = arr.filter(item => item.time != this.getAttribute('time'));
+                    renderLi()
+                    closeFn()
+                }
+            }
+        }
+        //渲染已有数据
+        function renderLi() {
+            let str = '';
+            arr.forEach((item, index) => {
+                str += ` <li time=${item.time} > ` + item.value + ` <input time=${item.time} type="button" value="删除"></li>`;
+            })
+            list.innerHTML = str;
+            txt.value = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 什么时候用箭头函数
+        // 1.需要让函数中的this是宿主环境中的this；
+        // 2.不涉及this，想让代码简洁些
+        // 宿主环境：不是执行的环境，是定义的环境
+        // 普通函数this指向
+        /*
+        let obj = {
+            name: 'obj',
+            fn() {
+                console.log(this);
+                //这里处理跟下面的sum一样
+            },
+            sum: function () {
+
+            }
+        }
+        obj.fn();//this:obj
+        document.body.onclick = obj.fn;//this:body
+        setTimeout(obj.fn, 1000);//this:window
+        obj.fn.call(12);//this:12
+        */
+
+        // 普通函数this指向
+        /*
+        let obj = {
+            name: 'obj',
+            fn: () => {
+                console.log(this);
+            },
+            sum: function () {
+
+            }
+        }
+        obj.fn();//this:window
+        document.body.onclick = obj.fn;//this:window
+        setTimeout(obj.fn, 1000);//this:window
+        obj.fn.call(12);//this:window
+        */
+
+        // 箭头函数使用
+        let obj = {
+            name: 'obj',
+            fn() {
+                setTimeout(() => {
+                    console.log(this);//this:obj
+                }, 1000);
+            }
+        }
+        obj.fn();
+    </script>
+</body>
+
+</html>

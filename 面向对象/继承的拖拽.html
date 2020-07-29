@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+
+        #box2 {
+            background: gray;
+            left: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+        function Drag(id) {//父类
+            this.obj = document.getElementById(id);
+            this.disX = 0;
+            this.disY = 0;
+        }
+        Drag.prototype.init = function () {
+            var _this = this;
+            this.obj.onmousedown = function (ev) {
+                _this.fnDown(ev);
+                document.onmousemove = function (ev) {
+                    _this.fnMove(ev);
+                }
+                document.onmouseup = function () {
+                    _this.fnUp();
+                }
+                return false;
+            }
+        }
+        Drag.prototype.fnDown = function (ev) {
+            this.disX = ev.clientX - this.obj.offsetLeft;
+            this.disY = ev.clientY - this.obj.offsetTop;
+        }
+        Drag.prototype.fnMove = function (ev) {
+
+            this.obj.style.left = ev.clientX - this.disX + 'px';
+            this.obj.style.top = ev.clientY - this.disY + 'px';
+        }
+        Drag.prototype.fnUp = function (ev) {
+            document.onmousemove = document.onmouseup = null;
+        }
+
+        function ChildDrag(id) {//子类
+            Drag.call(this, id);
+        }
+        extend(ChildDrag.prototype, Drag.prototype)
+        ChildDrag.prototype.fnMove = function (ev) {
+            var L = ev.clientX - this.disX;
+            var T = ev.clientY - this.disY;
+            if (L < 0) {
+                L = 0;
+            } else if (L > document.documentElement.clientWidth - this.obj.offsetWidth) {
+                L = document.documentElement.clientWidth - this.obj.offsetWidth;
+            }
+            this.obj.style.left = L + 'px';
+            this.obj.style.top = T + 'px';
+        }
+        function extend(obj1, obj2) {
+            for (var attr in obj2) {
+                obj1[attr] = obj2[attr];
+            }
+        }
+        var div1 = new Drag('box1');
+        div1.init();
+        var div2 = new ChildDrag('box2');
+        div2.init();
+
+    </script>
+</body>
+
+</html>
