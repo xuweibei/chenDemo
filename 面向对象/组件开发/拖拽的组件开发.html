@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: red;
+        }
+
+        #div2 {
+            left: 100px;
+            background: blue;
+        }
+
+        #div3 {
+            left: 200px;
+            background: green;
+        }
+
+        #div4 {
+            left: 300px;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <script>
+
+        //组件开发 : 多组对象，像兄弟之间的关系( 代码复用的一种形式 )
+        // 有配置走配置，没配置走默认
+        function Drag() {
+            this.obj = null;
+            this.disX = 0;
+            this.dixY = 0;
+            this.settings = {//默认参数
+                toDown: function () { },
+                toUp: function () { }
+            }
+
+        }
+        Drag.prototype.init = function (opt) {
+            var _this = this;
+            this.obj = document.getElementById(opt.id);
+            extend(this.settings, opt);
+            this.obj.onmousedown = function (ev) {
+                _this.fnDown(ev);
+                _this.settings.toDown();
+                document.onmousemove = function (ev) {
+                    _this.fnMove(ev);
+                }
+                document.onmouseup = function () {
+                    _this.fnUp();
+                    _this.settings.toUp();
+                }
+                return false;
+            }
+        }
+        Drag.prototype.fnDown = function (ev) {
+            this.disX = ev.clientX - this.obj.offsetLeft;
+            this.disY = ev.clientY - this.obj.offsetTop;
+        }
+        Drag.prototype.fnMove = function (ev) {
+            this.obj.style.left = ev.clientX - this.disX + 'px';
+            this.obj.style.top = ev.clientY - this.disY + 'px';
+
+        }
+        Drag.prototype.fnUp = function () {
+            document.onmousemove = document.onmouseup = null;
+        }
+        function ChildDrag(id) {//子类
+            Drag.call(this, id);
+        }
+        extend(ChildDrag.prototype, Drag.prototype);
+        // 子集特有的
+        ChildDrag.prototype.fnMove = function (ev) {
+
+            var L = ev.clientX - this.disX;
+            var T = ev.clientY - this.disY;
+
+            if (L < 0) {
+                L = 0;
+            }
+            else if (L > document.documentElement.clientWidth - this.obj.offsetWidth) {
+                L = document.documentElement.clientWidth - this.obj.offsetWidth;
+            }
+
+            this.obj.style.left = L + 'px';
+            this.obj.style.top = T + 'px';
+        };
+        function extend(obj1, obj2) {
+            for (var attr in obj2) {
+                obj1[attr] = obj2[attr];
+            }
+        }
+
+        var d1 = new Drag();
+        // JSON形式
+        d1.init({//配置参数
+            id: 'div1'
+        });
+        var d2 = new Drag();
+        d2.init({ //配置参数
+            id: 'div2',
+            toDown: function () {
+                document.title = 'hello';
+            }
+        });
+        var d3 = new Drag();
+        d3.init({    //配置参数
+            id: 'div3',
+            toDown: function () {
+                document.title = 'hello';
+            },
+            toUp: function () {
+                document.title = 'word';
+            }
+        });
+
+        var d4 = new Drag();
+        d4.init({    //配置参数
+            id: 'div4',
+            toUp: function () {
+                document.title = 'beybye';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 传统方法
+        // function Person(age, name) {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+
+        // Person.prototype.say = function () {
+        //     console.log(this.name + '是个警察');
+        // }
+        // class写法
+        class Person {
+            constructor(age, name) {
+                this.name = name;
+                this.age = age;
+            }
+            say() {
+                alert(this.name + '是中国人');
+            }
+            showName() {
+                console.log(this.name);
+            }
+        }
+        Person.prototype.running = function () {
+            alert(123);
+        }
+        var p = new Person(18, '小明');
+        var p2 = new Person(80, '大明');
+
+        p.say();
+        // p.running();
+        p2.say();
+    </script>
+</body>
+
+</html>

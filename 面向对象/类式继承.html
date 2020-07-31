@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //类 : JS是没有类的概念的 , 把JS中的构造函数看做的类
+
+        //要做属性和方法继承的时候，要分开继承
+
+        // 类式继承：也叫做原型式继承。 将子类的原型指向父类的实例。
+        // 父类
+        /*
+        function Aa() {
+            this.name = '小明';
+        }
+        Aa.prototype.showNmae = function () {
+            console.log(this.name);
+        }
+        // 子类
+        function Bb() {
+
+        }
+        Bb.prototype = new Aa();//实现继承
+        var b1 = new Bb()
+        console.log(b1.name);
+        */
+        //......................................
+
+        //上面的继承有几点问题：1.constractor的指向被改变了
+        // console.log(b1.constructor);
+        // 弹出结果为
+        // function Aa() {
+        //     this.name = '小明';
+        // }
+        //所以 constractor的指向被改变了；修正指向
+        // Bb.prototype = new Aa();//这个就叫做类式继承
+        // Bb.prototype.constructor = Bb;//修正指向问题
+        //......................................
+
+
+
+        //....................................
+        // 2.子类可以改变父类的属性
+        /*
+        function Aa() {
+            this.name = [1, 2, 3];
+        }
+        Aa.prototype.showName = function () {
+            console.log(this.name);
+        }
+        function Bb() {
+
+        }
+        Bb.prototype = new Aa();//实现继承
+        Bb.prototype.constructor = Bb;//修正指向问题 
+
+        var b1 = new Bb();
+        b1.name.push(4);
+        var b2 = new Bb();
+        console.log(b2.name);//[1,2,3,4]
+        */
+        //....................................
+        //此处的b1 b2相互影响了，改变了父类函数Aa，所以是有问题的，上面的代码可改成：
+        // 父类
+        function Aa() {
+            this.name = '小明';
+        }
+        Aa.prototype.showName = function () {
+            console.log(this.name);
+        }
+        // 子类
+        function Bb() {
+
+        }
+        //下面的4行非常重要
+        var F = function () { };
+        F.prototype = Aa.prototype;//此处只能传递方法，没有办法传递属性
+        Bb.prototype = new F(); //把F的实例赋给Bb的原型
+        Bb.prototype.constructor = Bb;//修正指向问题 
+
+        var b1 = new Bb();
+        b1.showName();
+        console.log(b1.name)
+
+    </script>
+</body>
+
+</html>
